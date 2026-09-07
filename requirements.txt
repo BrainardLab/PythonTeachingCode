@@ -1,0 +1,11 @@
+# Packages used by the teaching notebooks.
+# Google Colab already ships most of these, so this file mainly helps when
+# running the notebooks locally (pip install -r requirements.txt).
+# If a notebook needs something Colab lacks, add it here and put
+#   !pip install -r https://raw.githubusercontent.com/BrainardLab/PythonTeachingCode/main/requirements.txt
+# in the notebook's first code cell.
+
+numpy
+scipy
+matplotlib
+pandas
