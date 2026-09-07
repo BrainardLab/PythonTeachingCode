@@ -24,6 +24,7 @@ back to GitHub. To keep your edits use *File → Save a copy in Drive*, or
 | Notebook | Open in Colab |
 | --- | --- |
 | [notebooks/00_colab_quickstart.ipynb](notebooks/00_colab_quickstart.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/00_colab_quickstart.ipynb) |
+| [notebooks/StockChangeDistribution.ipynb](notebooks/StockChangeDistribution.ipynb) — daily S&P 500 moves vs. a normal distribution | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/StockChangeDistribution.ipynb) |
 
 ## Adding a new notebook
 
