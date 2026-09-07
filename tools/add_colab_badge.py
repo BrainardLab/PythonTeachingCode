@@ -56,7 +56,7 @@ def update_notebook(path: Path) -> bool:
 
 def main(argv: list[str]) -> int:
     if argv:
-        targets = [Path(a) for a in argv]
+        targets = [Path(a).resolve() for a in argv]
     else:
         targets = sorted((REPO_ROOT / "notebooks").glob("*.ipynb"))
 
