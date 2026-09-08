@@ -20,7 +20,6 @@ OUT = Path(__file__).resolve().parent.parent / "notebooks"
 BOOTSTRAP = '''\
 # --- Make dist_tools.py importable ---------------------------------------
 # Locally it sits next to this notebook. On Colab we grab it from GitHub.
-# %autoreload picks up edits to dist_tools.py without a kernel restart.
 import os, urllib.request
 if not os.path.exists("dist_tools.py"):
     urllib.request.urlretrieve(
@@ -29,8 +28,15 @@ if not os.path.exists("dist_tools.py"):
         "dist_tools.py",
     )
 
-%load_ext autoreload
-%autoreload 2
+# Optional: pick up edits to dist_tools.py without restarting the kernel.
+# Skipped silently where the autoreload extension is unavailable (e.g. the
+# Python 3.13 build currently on Google Colab).
+try:
+    _ip = get_ipython()
+    _ip.run_line_magic("load_ext", "autoreload")
+    _ip.run_line_magic("autoreload", "2")
+except Exception:
+    pass
 
 import numpy as np
 import pandas as pd
