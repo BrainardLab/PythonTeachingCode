@@ -24,7 +24,20 @@ back to GitHub. To keep your edits use *File → Save a copy in Drive*, or
 | Notebook | Open in Colab |
 | --- | --- |
 | [notebooks/00_colab_quickstart.ipynb](notebooks/00_colab_quickstart.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/00_colab_quickstart.ipynb) |
-| [notebooks/StockChangeDistribution.ipynb](notebooks/StockChangeDistribution.ipynb) — daily S&P 500 moves vs. a normal distribution | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/StockChangeDistribution.ipynb) |
+| [notebooks/StockChangeDistribution.ipynb](notebooks/StockChangeDistribution.ipynb) — daily S&P 500 moves (fat tails) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/StockChangeDistribution.ipynb) |
+| [notebooks/HeightDistribution.ipynb](notebooks/HeightDistribution.ipynb) — adult women's height, NHANES (nicely normal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/HeightDistribution.ipynb) |
+| [notebooks/CityPopulationDistribution.ipynb](notebooks/CityPopulationDistribution.ipynb) — US city sizes, raw and log10 (lognormal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/CityPopulationDistribution.ipynb) |
+
+### The "is it normal?" set
+
+`StockChangeDistribution`, `HeightDistribution`, and `CityPopulationDistribution`
+all compare a real data set against a normal distribution using the **same**
+plots and summary table. That shared code lives in
+[notebooks/dist_tools.py](notebooks/dist_tools.py); each notebook only loads its
+data, wraps it in a `dist_tools.Distribution`, and calls `dist_tools.analyze()`.
+Edit `dist_tools.py` once and all three notebooks change together. (Each notebook
+downloads `dist_tools.py` from GitHub at run time when it isn't already present,
+so Colab works with no extra steps.)
 
 ## Adding a new notebook
 
