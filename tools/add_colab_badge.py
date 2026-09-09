@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Ensure every notebook in notebooks/ starts with an "Open in Colab" badge.
+"""Ensure every notebook under notebooks/ starts with an "Open in Colab" badge.
 
 The badge links to the notebook's own path on GitHub so students can launch it
 in Colab with one click. Running this repeatedly is safe: an existing badge
@@ -58,7 +58,8 @@ def main(argv: list[str]) -> int:
     if argv:
         targets = [Path(a).resolve() for a in argv]
     else:
-        targets = sorted((REPO_ROOT / "notebooks").glob("*.ipynb"))
+        targets = sorted(p for p in (REPO_ROOT / "notebooks").rglob("*.ipynb")
+                         if ".ipynb_checkpoints" not in p.parts)
 
     if not targets:
         print("No notebooks found.")

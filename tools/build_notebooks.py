@@ -15,7 +15,7 @@ not here -- that is what keeps the notebooks in lock step at run time.
 import json
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parent.parent / "notebooks"
+OUT = Path(__file__).resolve().parent.parent / "notebooks" / "key" / "lecture_3.2"
 
 BOOTSTRAP = '''\
 # --- Make dist_tools.py importable ---------------------------------------
@@ -24,7 +24,7 @@ import os, urllib.request
 if not os.path.exists("dist_tools.py"):
     urllib.request.urlretrieve(
         "https://raw.githubusercontent.com/BrainardLab/PythonTeachingCode"
-        "/main/notebooks/dist_tools.py",
+        "/main/notebooks/key/lecture_3.2/dist_tools.py",
         "dist_tools.py",
     )
 

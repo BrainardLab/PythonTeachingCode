@@ -21,34 +21,37 @@ back to GitHub. To keep your edits use *File → Save a copy in Drive*, or
 
 ## Notebooks
 
+### Lecture 3.2 — "is it normal?"
+
+`notebooks/key/lecture_3.2/` holds three notebooks that each compare a real
+data set against a normal distribution using the **same** plots and summary
+table:
+
 | Notebook | Open in Colab |
 | --- | --- |
-| [notebooks/00_colab_quickstart.ipynb](notebooks/00_colab_quickstart.ipynb) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/00_colab_quickstart.ipynb) |
-| [notebooks/StockChangeDistribution.ipynb](notebooks/StockChangeDistribution.ipynb) — daily S&P 500 moves (fat tails) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/StockChangeDistribution.ipynb) |
-| [notebooks/HeightDistribution.ipynb](notebooks/HeightDistribution.ipynb) — adult women's height, NHANES (nicely normal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/HeightDistribution.ipynb) |
-| [notebooks/CityPopulationDistribution.ipynb](notebooks/CityPopulationDistribution.ipynb) — US city sizes, raw and log10 (lognormal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/CityPopulationDistribution.ipynb) |
+| [StockChangeDistribution.ipynb](notebooks/key/lecture_3.2/StockChangeDistribution.ipynb) — daily S&P 500 moves (fat tails) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/StockChangeDistribution.ipynb) |
+| [HeightDistribution.ipynb](notebooks/key/lecture_3.2/HeightDistribution.ipynb) — adult women's height, NHANES (nicely normal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/HeightDistribution.ipynb) |
+| [CityPopulationDistribution.ipynb](notebooks/key/lecture_3.2/CityPopulationDistribution.ipynb) — US city sizes, raw and log10 (lognormal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/CityPopulationDistribution.ipynb) |
 
-### The "is it normal?" set
-
-`StockChangeDistribution`, `HeightDistribution`, and `CityPopulationDistribution`
-all compare a real data set against a normal distribution using the **same**
-plots and summary table. That shared code lives in
-[notebooks/dist_tools.py](notebooks/dist_tools.py); each notebook only loads its
-data, wraps it in a `dist_tools.Distribution`, and calls `dist_tools.analyze()`.
-Edit `dist_tools.py` once and all three notebooks change together. (Each notebook
-downloads `dist_tools.py` from GitHub at run time when it isn't already present,
-so Colab works with no extra steps.)
+The shared code lives in
+[notebooks/key/lecture_3.2/dist_tools.py](notebooks/key/lecture_3.2/dist_tools.py);
+each notebook only loads its data, wraps it in a `dist_tools.Distribution`, and
+calls `dist_tools.analyze()`. Edit `dist_tools.py` once and all three notebooks
+change together. Each notebook downloads `dist_tools.py` from GitHub at run time
+when it isn't already present, so Colab works with no extra steps.
+`tools/build_notebooks.py` regenerates the three notebooks' shared scaffolding.
 
 ## Adding a new notebook
 
-1. Put the `.ipynb` file in `notebooks/`.
+1. Put the `.ipynb` file anywhere under `notebooks/`.
 2. Run `python tools/add_colab_badge.py` to insert an "Open in Colab" badge as
-   the first cell (idempotent — safe to re-run on every notebook).
-3. Add a row to the table above.
+   the first cell (idempotent — safe to re-run on every notebook; it recurses
+   into subfolders).
+3. Add a row to a table above.
 4. Commit and push:
 
    ```bash
-   git add notebooks/your_notebook.ipynb README.md
+   git add notebooks/ README.md
    git commit -m "Add your_notebook"
    git push
    ```
