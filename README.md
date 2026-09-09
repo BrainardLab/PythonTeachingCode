@@ -21,19 +21,20 @@ back to GitHub. To keep your edits use *File → Save a copy in Drive*, or
 
 ## Notebooks
 
-### Lecture 3.2 — "is it normal?"
+### Lecture 3.2
 
-`notebooks/key/lecture_3.2/` holds three notebooks that each compare a real
-data set against a normal distribution using the **same** plots and summary
-table:
+Notebooks in `notebooks/key/lecture_3.2/`:
 
 | Notebook | Open in Colab |
 | --- | --- |
+| [lecture_3.2_Group_A.ipynb](notebooks/key/lecture_3.2/lecture_3.2_Group_A.ipynb) — in-class predict-then-plot, pooled Group A height game | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/lecture_3.2_Group_A.ipynb) |
 | [StockChangeDistribution.ipynb](notebooks/key/lecture_3.2/StockChangeDistribution.ipynb) — daily S&P 500 moves (fat tails) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/StockChangeDistribution.ipynb) |
 | [HeightDistribution.ipynb](notebooks/key/lecture_3.2/HeightDistribution.ipynb) — adult women's height, NHANES (nicely normal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/HeightDistribution.ipynb) |
 | [CityPopulationDistribution.ipynb](notebooks/key/lecture_3.2/CityPopulationDistribution.ipynb) — US city sizes, raw and log10 (lognormal) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lecture_3.2/CityPopulationDistribution.ipynb) |
 
-The shared code lives in
+`StockChangeDistribution`, `HeightDistribution`, and `CityPopulationDistribution`
+each compare a real data set against a normal distribution using the **same**
+plots and summary table. The shared code lives in
 [notebooks/key/lecture_3.2/dist_tools.py](notebooks/key/lecture_3.2/dist_tools.py);
 each notebook only loads its data, wraps it in a `dist_tools.Distribution`, and
 calls `dist_tools.analyze()`. Edit `dist_tools.py` once and all three notebooks
