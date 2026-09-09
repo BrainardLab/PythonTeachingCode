@@ -65,8 +65,8 @@ class Distribution:
 #  One panel                                                                  #
 # --------------------------------------------------------------------------- #
 def hist_panel(values, bins, xlabel, title, mean, std, *, noun="observations",
-               scale="full", mark_sigma=False, zoom_top=10):
-    """Histogram of ``values`` with the curve ``Normal(mean, std)`` drawn on top.
+               scale="full", mark_sigma=False, show_fit=True, zoom_top=10):
+    """Histogram of ``values``, optionally with ``Normal(mean, std)`` on top.
 
     The "normal fit" is nothing more than ``mean`` and ``std`` -- no shape or
     tail fitting is done (for a Gaussian those are exactly what a
@@ -76,15 +76,17 @@ def hist_panel(values, bins, xlabel, title, mean, std, *, noun="observations",
             "zoom"  linear y-axis capped low   -> rare extreme values show up
             "log"   logarithmic y-axis         -> every frequency on one axis
     mark_sigma : dashed guides at -3 and +3 (used on the z-score plots)
+    show_fit : draw the normal curve; set False for the histogram on its own
     """
     bw = bins[1] - bins[0]
-    grid = np.linspace(bins[0], bins[-1], 1000)
-    expected = stats.norm.pdf(grid, mean, std) * len(values) * bw
 
     fig, ax = plt.subplots(figsize=(7, 4.5))
     ax.hist(values, bins=bins, color="steelblue", alpha=0.6,
             label=f"Actual {noun}")
-    ax.plot(grid, expected, "r-", lw=2, label="normal fit")
+    if show_fit:
+        grid = np.linspace(bins[0], bins[-1], 1000)
+        expected = stats.norm.pdf(grid, mean, std) * len(values) * bw
+        ax.plot(grid, expected, "r-", lw=2, label="normal fit")
 
     ax.set_xlabel(xlabel)
     ax.set_ylabel(f"Number of {noun}")
@@ -112,11 +114,12 @@ def hist_panel(values, bins, xlabel, title, mean, std, *, noun="observations",
 # --------------------------------------------------------------------------- #
 #  A row of three panels (native units, or z-score)                           #
 # --------------------------------------------------------------------------- #
-def plot_views(d: Distribution, axis: str = "value"):
+def plot_views(d: Distribution, axis: str = "value", show_fit: bool = True):
     """Draw the three panels (full / zoom / log) for one distribution.
 
     axis="value"  -> x-axis in native units
     axis="zscore" -> x-axis rescaled to (value - mean) / std
+    show_fit=False -> omit the normal curve (the histogram on its own)
     """
     v = d.values
     mu, sigma = v.mean(), v.std()
@@ -134,7 +137,7 @@ def plot_views(d: Distribution, axis: str = "value"):
         mean, std = mu, sigma
         xlabel = d.xlabel
         mark = False
-        tag = ""
+        tag = "" if show_fit else "  —  histogram only"
 
     titles = {
         "full": f"{d.quantity}{tag} — full view",
@@ -144,7 +147,15 @@ def plot_views(d: Distribution, axis: str = "value"):
     for scale in SCALES:
         hist_panel(values, bins, xlabel, titles[scale], mean, std,
                    noun=d.noun, scale=scale, mark_sigma=mark,
-                   zoom_top=d.zoom_top)
+                   show_fit=show_fit, zoom_top=d.zoom_top)
+
+
+def raw_histogram(d: Distribution):
+    """Draw the three native-unit panels (full / zoom / log) with no normal
+    curve -- the histogram on its own, before any fit is discussed.  The same
+    panels appear again, with the fit, as the first half of :func:`analyze`.
+    """
+    plot_views(d, axis="value", show_fit=False)
 
 
 # --------------------------------------------------------------------------- #

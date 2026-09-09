@@ -42,6 +42,12 @@ import numpy as np
 import pandas as pd
 import dist_tools as dt'''
 
+RAW_HIST_MD = (
+    "**The histogram on its own.** Look at the shape of the data first, with no\n"
+    "normal curve drawn on top. The same three panels appear again just below,\n"
+    "this time with the fit added."
+)
+
 
 def md(text):
     return {"cell_type": "markdown", "metadata": {}, "source": text.splitlines(keepends=True)}
@@ -99,6 +105,8 @@ stock = notebook([
          '    note=f"{change.index.min().date()} to {change.index.max().date()}",\n'
          '    bin_width=0.5,\n'
          ')'),
+    md(RAW_HIST_MD),
+    code("dt.raw_histogram(stock)"),
     code("dt.analyze(stock)"),
     md("## What to notice\n\n"
        "- In the **full view** the normal fit tracks the central hump well.\n"
@@ -157,6 +165,8 @@ height = notebook([
          '    note="non-Hispanic white women, ages 20-59",\n'
          '    bin_width=1.0,\n'
          ')'),
+    md(RAW_HIST_MD),
+    code("dt.raw_histogram(height)"),
     code("dt.analyze(height)"),
     md("## What to notice\n\n"
        "- The normal fit tracks the histogram closely everywhere, including on\n"
@@ -221,8 +231,12 @@ city = notebook([
          '    value_fmt="{:.2f}",\n'
          ')'),
     md("### Raw city sizes (straight numbers)"),
+    md(RAW_HIST_MD),
+    code("dt.raw_histogram(city_raw)"),
     code("dt.analyze(city_raw)"),
     md("### The same data, log10 of population"),
+    md(RAW_HIST_MD),
+    code("dt.raw_histogram(city_log)"),
     code("dt.analyze(city_log)"),
     md("## What to notice\n\n"
        "- **Raw:** almost every city sits in the first bar and a thin tail\n"
