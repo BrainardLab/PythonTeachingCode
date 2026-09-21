@@ -42,6 +42,14 @@ change together. Each notebook downloads `dist_tools.py` from GitHub at run time
 when it isn't already present, so Colab works with no extra steps.
 `tools/build_notebooks.py` regenerates the three notebooks' shared scaffolding.
 
+### Lectures 5.1–5.2
+
+Notebooks in `notebooks/key/lectures_5.1_5.2/`:
+
+| Notebook | Open in Colab |
+| --- | --- |
+| [SpuriousCorrelations.ipynb](notebooks/key/lectures_5.1_5.2/SpuriousCorrelations.ipynb) — correlation vs. causation, five real spurious correlations (margarine/divorce, UFOs/patents, school enrollment/BofA stock, baby names/stock price, movie roles/electricity) replotted from [tylervigen.com](https://www.tylervigen.com/spurious-correlations), a source-verification summary, one example extended with real current data, and a deliberately arbitrary (not cherry-picked) pairing testing whether two unrelated variables still show a "significant" correlation | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lectures_5.1_5.2/SpuriousCorrelations.ipynb) |
+
 ## Adding a new notebook
 
 1. Put the `.ipynb` file anywhere under `notebooks/`.

@@ -10,6 +10,7 @@ scipy
 matplotlib
 pandas
 yfinance
+ipywidgets
 
 # urllib3 v2 drops the LibreSSL that ships with the macOS system Python and
 # prints a NotOpenSSLWarning on every import. Colab is unaffected; this pin
