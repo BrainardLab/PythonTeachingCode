@@ -42,6 +42,14 @@ change together. Each notebook downloads `dist_tools.py` from GitHub at run time
 when it isn't already present, so Colab works with no extra steps.
 `tools/build_notebooks.py` regenerates the three notebooks' shared scaffolding.
 
+### Lab W4
+
+Notebooks in `notebooks/key/lab_W4/`:
+
+| Notebook | Open in Colab |
+| --- | --- |
+| [False_Positives_Negatives.ipynb](notebooks/key/lab_W4/False_Positives_Negatives.ipynb) — interactive digital companion for the Week 4 lab on false positives/negatives: adjustable decision-threshold sliders show how the four outcome counts and error rates change | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/BrainardLab/PythonTeachingCode/blob/main/notebooks/key/lab_W4/False_Positives_Negatives.ipynb) |
+
 ### Lectures 5.1–5.2
 
 Notebooks in `notebooks/key/lectures_5.1_5.2/`:
